@@ -3,7 +3,7 @@
  * Plugin Name: WP Gfycat
  * Plugin URI: http://labs.monchito.net/wp-gfycat/
  * Description: A simple shortcode to add your gfycat videos into your website.
- * Version: 0.9
+ * Version: 0.9.1
  * Author: Monchito.net
  * Author URI: http://www.monchito.net
  * License: GPLv2
@@ -52,4 +52,31 @@ class wp_gfycat {
 
 add_shortcode('gfycat', array('wp_gfycat', 'shortcode'));
 
+// init process for registering tinymce button
+ add_action('init', 'wpbgfycat_shortcode_button_init');
+ function wpbgfycat_shortcode_button_init() {
+
+      //Abort early if the user will never see TinyMCE
+      if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') && get_user_option('rich_editing') == 'true')
+           return;
+
+      //Add a callback to regiser the tinymce plugin   
+      add_filter("mce_external_plugins", "wpbgfycat_register_tinymce_plugin"); 
+
+      // Add a callback to add the button to the TinyMCE toolbar
+      add_filter('mce_buttons', 'wpbgfycat_add_tinymce_button');
+}
+
+//This callback registers the plug-in
+function wpbgfycat_register_tinymce_plugin($plugin_array) {
+    $plugin_array['wpbgfycat_button'] = plugins_url( '/js/shortcode.js' , __FILE__ );
+    return $plugin_array;
+}
+
+//This callback adds the button to the toolbar
+function wpbgfycat_add_tinymce_button($buttons) {
+            //Add the button ID to the $button array
+    $buttons[] = "wpbgfycat_button";
+    return $buttons;
+}
 ?>

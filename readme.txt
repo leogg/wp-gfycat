@@ -4,7 +4,7 @@ Tags: gfycat,shortcode,video,image,gif,html5
 Donate link: http://labs.monchito.net/wp-gfycat/
 Requires at least: 3.9.1
 Tested up to: 3.9.1
-Stable tag: 0.9
+Stable tag: 0.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/copyleft/gpl.html
 
@@ -48,7 +48,11 @@ Manual Installation
 
 = How do I embed gfycats in my posts/pages/templates? =
 
-There are two ways two embed gfycats. You can use the `[gfycat]` shortcode anywhere in your posts or pages:
+1. Copy and paste the ID of a gfycat video anywhere in your posts or pages. (The ID is the part after http://gfycat.com/ in the URL. E.g. **MelodicShadowyChinchilla** in http://gfycat.com/MelodicShadowyChinchilla)
+1. Select the text you just pasted and click the WP Gfycat button in the visual editor.
+1. That's it! Save your post or preview it.
+
+You can use enter manually the `[gfycat]` shortcode anywhere in your posts or pages:
 
 `[gfycat data_id="BestYellowishElephantseal"]`
 
@@ -59,5 +63,7 @@ You can also display the gfycats outside your posts or pages using `do_shortcode
 == Screenshots ==
 
 == Changelog ==
+= 0.9.1 =
+* Added a wp-gfycat button to the TinyMCE editor.
 = 0.9 =
 * Initial release.
